@@ -1,3 +1,5 @@
+
+
 bool isValid(char * s){
 
     if( s == NULL )
@@ -6,11 +8,11 @@ bool isValid(char * s){
     int top = 0;
     for( int i=0; s[i]!='\0'; i++)
     {
-                 If(s[i]=='(' || s[i]=='[' || s[i]=='{') //Left brackets are pushed onto the stack
-            stack[++top] = s[i];
-                 Else if( (s[i]==')'&&stack[top]=='(') || (s[i]==']'&&stack[top]=='[') || (s[ i]=='}'&&stack[top]=='{') ) //right parenthesis comparison
+                 if(s[i]=='(' || s[i]=='[' || s[i]=='{') 
+                    stack[++top] = s[i];
+                 else if( (s[i]==')'&&stack[top]=='(') || (s[i]==']'&&stack[top]=='[') || (s[ i]=='}'&&stack[top]=='{') ) //right parenthesis comparison
             top--;
-                 Else // comparison failed
+                 else // comparison failed
             return false;
     }
     if( stack!= NULL)
@@ -18,7 +20,7 @@ bool isValid(char * s){
         free(stack);
         stack = NULL;
     }
-         If( top == 0 ) //The string ends and the stack is empty
+         if( top == 0 ) //The string ends and the stack is empty
         return true;
     return false;
 
