@@ -1,0 +1,35 @@
+       
+class Solution {
+public:
+  void solve(vector<string>&res,string s,string &digits,vector<string>&phn,int i)
+    {
+        int n=digits.size();
+        if(i==n)
+        {
+            res.push_back(s);
+            return;
+        }
+        
+        int x=digits[i]-'0'-2;
+        
+        for(int k=0;k<phn[x].size();k++)
+        {
+            s.push_back(phn[x][k]);
+            solve(res,s,digits,phn,i+1);
+            s.pop_back();
+        }
+    }
+    vector<string> letterCombinations(string digits) {
+        vector<string>phn={"abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+
+        vector<string>res;
+        if(digits.size()==0)
+            return res;
+        string s="";
+        
+        solve(res,s,digits,phn,0);
+        
+        return res;
+    }
+    
+};
