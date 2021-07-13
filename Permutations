@@ -1,0 +1,31 @@
+class Solution {
+public:
+    vector<vector<int>> permute(vector<int>& nums) {
+        vector<vector<int>>ans;
+        ans.push_back({nums[0]});
+        
+        for(int i=1;i<nums.size();i++){
+            
+            vector<vector<int>>temp;
+            
+            for(int j=0;j<ans.size();j++){
+                
+                auto y=ans[j];
+                
+                int length=y.size(); // bcz y is also a vector
+                
+                for(int k=0;k<=length;k++){
+                    
+                    y.insert(y.begin()+k,nums[i]);
+                    temp.push_back(y);
+                    y = ans[j]; // reset y bcz its now changed
+                } 
+                
+            }
+            
+            ans=temp;
+        }
+        return ans;
+    
+    }
+};
